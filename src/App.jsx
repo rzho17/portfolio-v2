@@ -33,7 +33,9 @@ function App() {
         <>
           <Header content={data.name} />
 
-          <Outlet context={{ data }} />
+          <main>
+            <Outlet context={{ data }} />
+          </main>
 
           <Footer />
         </>

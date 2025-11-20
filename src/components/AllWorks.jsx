@@ -26,7 +26,7 @@ const AllWorks = () => {
   return (
     <>
       {isLoaded ? (
-        <div>
+        <>
           {data.map((project) => {
             return (
               <div>
@@ -38,7 +38,7 @@ const AllWorks = () => {
           <p>all works page</p>
           <Link to={"/works/asdffs"}>To Single</Link>
           <Link to={"/"}>To Home</Link>
-        </div>
+        </>
       ) : (
         <p>loading hehe</p>
       )}

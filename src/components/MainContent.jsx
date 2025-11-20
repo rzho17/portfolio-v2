@@ -8,13 +8,13 @@ const MainContent = () => {
 
   console.log(data);
   return (
-    <main>
+    <>
       <HomeSection homeData={data} />
       <AboutSection aboutData={data} />
       <section id="#works"></section>
       <Link to={"/works"}>TO all works</Link>
       <Link to={"/works/123123"}>TO a single workds</Link>
-    </main>
+    </>
   );
 };
 

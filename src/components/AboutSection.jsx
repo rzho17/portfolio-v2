@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutSection = ({ aboutData }) => {
   return (
-    <section id="#about">
+    <section id="about">
       <p>{aboutData.about_intro}</p>
       <div>
         <ul>

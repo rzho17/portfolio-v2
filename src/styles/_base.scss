@@ -5,6 +5,15 @@ $primary: #0049cc;
 body {
   background-color: $bg-color;
   color: $font-color;
+  font-family: "Geist", sans-serif;
+}
+
+main {
+  min-height: 100vh;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 li {

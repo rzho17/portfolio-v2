@@ -3,12 +3,19 @@ import { useOutletContext } from "react-router";
 
 const HomeSection = ({ homeData }) => {
   return (
-    <section id="#home">
-      <h1>{homeData.main_title_top}</h1>
-      <h1>{homeData.main_title_bot}</h1>
+    <section id="home">
+      <div className="main-title">
+        <h1>
+          {homeData.main_title_top}
+          <div>
+            {homeData.main_title_bot}
+            <div className="blob"></div>
+          </div>
+        </h1>
+      </div>
 
-      <p>{homeData.specialty_title}</p>
-      <p>{homeData.intro_description}</p>
+      <p className="brand-title">{homeData.specialty_title}</p>
+      <p className="slogan">{homeData.intro_description}</p>
     </section>
   );
 };

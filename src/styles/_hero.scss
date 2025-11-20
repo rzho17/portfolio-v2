@@ -1,0 +1,58 @@
+@use "base" as *;
+
+#home {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+
+  padding: 0 1rem;
+
+  .main-title {
+    grid-column: 1/ 5;
+    grid-row: 3/4;
+    align-self: center;
+    h1 {
+      font-weight: 100;
+      font-size: clamp(2.5rem, 2vw, 5rem);
+      text-transform: uppercase;
+    }
+    div {
+      //   position: relative;
+      display: flex;
+      font-weight: 900;
+      font-size: clamp(3.5rem, 5vw, 13.5rem);
+      width: max-content;
+      gap: 0.5rem;
+
+      .blob {
+        align-self: flex-end;
+        margin-bottom: 1rem;
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+        background-color: $primary;
+      }
+    }
+  }
+
+  .brand-title {
+    grid-column: 5/7;
+    grid-row: 2/3;
+    width: 100%;
+
+    align-self: flex-end;
+    line-height: 1;
+    font-weight: 100;
+    font-size: clamp(2.1875rem, 3vw, 8.625rem);
+    transform: rotate(-90deg);
+    z-index: -1;
+
+    // transform: skew(-90deg);
+    margin-bottom: 4rem;
+  }
+
+  .slogan {
+    grid-column: 1/ 6;
+  }
+}
