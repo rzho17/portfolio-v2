@@ -9,7 +9,7 @@ import { Outlet } from "react-router";
 function App() {
   const [data, setData] = useState();
   const [isLoaded, setIsLoaded] = useState();
-  const restPath = basePath + "pages/8";
+  const restPath = basePath + "pages/8" + "?acf_format=standard";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +37,7 @@ function App() {
             <Outlet context={{ data }} />
           </main>
 
-          <Footer />
+          <Footer data={data} />
         </>
       ) : null}
     </>

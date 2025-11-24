@@ -7,10 +7,10 @@ const HomeSection = ({ homeData }) => {
       <div className="main-title">
         <h1>
           {homeData.main_title_top}
-          <div>
+          <span>
             {homeData.main_title_bot}
-            <div className="blob"></div>
-          </div>
+            <span className="blob"></span>
+          </span>
         </h1>
       </div>
 

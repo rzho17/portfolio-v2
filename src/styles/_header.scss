@@ -1,9 +1,11 @@
 @use "base" as *;
 
+$header-padding-top: 1rem;
+
 header {
   display: flex;
   width: 100%;
-  padding: 1rem;
+  padding: 0rem $header-padding-top;
   position: relative;
 
   background-color: $bg-color;
@@ -17,7 +19,7 @@ header {
     left: -100%;
     transition: 0.4s ease-in;
 
-    margin-top: 1rem;
+    margin-top: $header-padding-top;
 
     display: flex;
     flex-direction: column;

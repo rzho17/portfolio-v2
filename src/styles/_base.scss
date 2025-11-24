@@ -1,6 +1,8 @@
 $bg-color: #f6f6f6;
 $font-color: #00011b;
 $primary: #0049cc;
+$font-size: clamp(1.25rem, 1.2vw, 3rem);
+$h2-size: clamp(3rem, 2vw, 8rem);
 
 body {
   background-color: $bg-color;
@@ -18,4 +20,31 @@ main {
 
 li {
   list-style: none;
+}
+
+.blob {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background-color: $primary;
+}
+
+h2 {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+// screen readers
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* For older browsers */
+  white-space: nowrap; /* Prevent line breaks */
+  border: 0;
 }

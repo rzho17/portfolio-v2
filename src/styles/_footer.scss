@@ -1,0 +1,67 @@
+@use "base" as *;
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  //   justify-content: space-between;
+
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr;
+  background-color: $font-color;
+  color: $bg-color;
+  padding: 2rem 1rem;
+  margin-top: 8rem;
+
+  h2 {
+    max-width: 200px;
+    display: block;
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: 2rem;
+    line-height: 0.9;
+
+    span {
+      display: inline-flex;
+      align-items: baseline;
+      font-size: clamp(2.5rem, 1vw, 5rem);
+
+      font-weight: 800;
+      gap: 0.25rem;
+
+      .blob {
+        width: 0.75rem;
+        height: 0.75rem;
+      }
+    }
+  }
+
+  nav {
+    ul {
+      li {
+        font-weight: 100;
+        font-size: clamp(1.5rem, 1vw, 2.5rem);
+        a {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-icons {
+    display: flex;
+    align-items: center;
+    width: max-content;
+
+    img {
+      width: 1.5rem;
+      filter: invert(100);
+    }
+  }
+}

@@ -37,7 +37,9 @@ const Header = ({ content }) => {
   //
   return (
     <header>
-      <h2>{content}</h2>
+      <Link to={"/"}>
+        <h2>{content}</h2>
+      </Link>
 
       {isDesktop ? (
         <nav>
