@@ -13,7 +13,6 @@ const MainContent = () => {
       <HomeSection homeData={data} />
       <AboutSection aboutData={data} />
       <FeaturedWorks />
-      <section id="#works"></section>
       <Link to={"/works"}>TO all works</Link>
       <Link to={"/works/123123"}>TO a single workds</Link>
     </>

@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { basePath } from "../../globals";
 import { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import ACFImage from "./ACFImage";
 
 const SingleWork = () => {
   const { id } = useParams();
@@ -47,6 +48,7 @@ const SingleWork = () => {
               </div>
             ) : null}
 
+            {/* <ACFImage acfImageObject={data.main_image} /> */}
             <picture>
               <img src={data.main_image.url} alt={data.main_image.alt} />
             </picture>
@@ -98,12 +100,13 @@ const SingleWork = () => {
               {data.highlight.map((insight) => {
                 return (
                   <div>
-                    <figure>
+                    <ACFImage acfImageObject={insight.highlight_image} />
+                    {/* <figure>
                       <img
                         src={insight.highlight_image.url}
                         alt={insight.highlight_image.alt}
                       />
-                    </figure>
+                    </figure> */}
                     <figcaption>{insight.highlight_info}</figcaption>
                   </div>
                 );

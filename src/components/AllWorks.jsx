@@ -27,17 +27,48 @@ const AllWorks = () => {
     <>
       {isLoaded ? (
         <>
-          {data.map((project) => {
-            return (
-              <div>
-                <h2>{project.id}</h2>
-                <Link to={`/works/${project.id}`}>To {project.id}</Link>
-              </div>
-            );
-          })}
-          <p>all works page</p>
-          <Link to={"/works/asdffs"}>To Single</Link>
-          <Link to={"/"}>To Home</Link>
+          <section id="all-works">
+            <h1>
+              All Works
+              <span className="blob"></span>
+            </h1>
+            <div className="article-container">
+              {data.map((project, index) => {
+                const singleProject = project.acf;
+
+                return singleProject.short_desc ? (
+                  <article>
+                    <span>{index + 1}</span>
+                    <div>
+                      <h2>{singleProject.project_title}</h2>
+                      <p>{singleProject.short_desc}</p>
+                    </div>
+                    <Link to={`/works/${project.id}`} aria-label="Project Link">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" />
+                      </svg>
+                    </Link>
+                  </article>
+                ) : (
+                  <article>
+                    <span>{index + 1}</span>
+                    <div>
+                      <h2>Coming Soon...</h2>
+                      <p>Something good is cooking, can you smell it?</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+            <p>all works page</p>
+            <Link to={"/works/asdffs"}>To Single</Link>
+            <Link to={"/"}>To Home</Link>
+          </section>
         </>
       ) : (
         <p>loading hehe</p>

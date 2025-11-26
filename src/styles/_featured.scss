@@ -59,3 +59,40 @@
     }
   }
 }
+
+@media (min-width: 48em) {
+  #works {
+    padding: 1rem 0;
+    .featured-container {
+      .featured-project {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border: none;
+
+        .acf-image {
+          background-image: url("https://images.unsplash.com/photo-1760605193118-a3536e1eea61?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+          //   filter: grayscale(100);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: red;
+          img {
+            object-fit: contain;
+            height: 400px;
+            // width: 95%;
+          }
+        }
+
+        .featured-text {
+          a {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-items: flex-end;
+            align-items: flex-end;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}

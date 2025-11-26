@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { basePath } from "../../globals";
 import { Link } from "react-router";
 import FeatureProjectImage from "./FeatureProjectImage";
+import ACFImage from "./ACFImage";
 
 const FeaturedWorks = () => {
   const [data, setData] = useState();
@@ -37,10 +38,11 @@ const FeaturedWorks = () => {
               const projectPath = project.acf;
               return (
                 <div className="featured-project">
-                  <FeatureProjectImage
+                  {/* <FeatureProjectImage
                     url={`${projectPath.main_image.url}`}
                     alt={`${projectPath.main_image.alt}`}
-                  />
+                  /> */}
+                  <ACFImage acfImageObject={projectPath.main_image} />
                   <div className="featured-text">
                     <h3>{projectPath.project_title}</h3>
                     <figcaption>{projectPath.short_desc}</figcaption>

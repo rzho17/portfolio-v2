@@ -39,10 +39,9 @@ const AboutSection = ({ aboutData }) => {
             <p>{aboutData.about_me_text_2}</p>
             <p>{aboutData.about_me_text_3}</p>
           </div>
+          <SkillsSection />
         </div>
       </div>
-
-      <SkillsSection />
     </section>
   );
 };

@@ -48,6 +48,7 @@
       }
 
       h2 {
+        font-size: clamp(1.5rem, 1vw, 3rem);
         font-weight: 200;
         margin: 1rem 0 0;
       }
@@ -73,6 +74,10 @@
       }
 
       .links {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+
         padding: 2rem 0;
         text-align: right;
         font-weight: 100;
@@ -85,14 +90,21 @@
     text-align: center;
     max-width: 500px;
     margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     h2 {
       font-weight: 300;
     }
   }
 
   .highlights-container {
+    padding: 1rem;
     h2 {
       text-align: center;
+      border-bottom: 3px solid $primary;
+      padding-bottom: 1.5rem;
     }
 
     .highlights {
@@ -101,7 +113,13 @@
         border-bottom: 2px solid;
 
         figure {
-          padding: 2rem 0 1rem;
+          img {
+            width: 100%;
+            height: max-content;
+            object-fit: contain;
+          }
+          //   padding: 2rem 0 1rem;
+          //   padding: 1rem;
         }
         figcaption {
           font-size: $font-size;

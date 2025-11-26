@@ -9,9 +9,31 @@ const Header = ({ content }) => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  useEffect(() => {
+    const nav = document.querySelector("header");
+    if (!nav) return;
+
+    const scrollPoint = 100;
+
+    const handleScroll = () => {
+      if (window.scrollY > scrollPoint) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const body = document.querySelector("body");
+    const nav = document.querySelector("header");
+    const scrollPoint = 50;
 
     if (isOpen) {
       body.classList.add("no-scroll");
@@ -19,8 +41,19 @@ const Header = ({ content }) => {
       body.classList.remove("no-scroll");
     }
 
+    const handleScroll = () => {
+      if (window.scrollY > scrollPoint) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
-      body.classList.remove("no-scroll"); // cleanup
+      body.classList.remove("no-scroll");
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [isOpen]);
 
@@ -42,8 +75,11 @@ const Header = ({ content }) => {
       </Link>
 
       {isDesktop ? (
-        <nav>
+        <nav className="desktop-nav-wrapper">
           <ul className="desktop-nav">
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
             <li>
               <Link to={"/#about"}>About</Link>
             </li>
@@ -64,6 +100,9 @@ const Header = ({ content }) => {
             <div className="small-square"></div>
           </div>
           <ul className="nav-list">
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
             <li>
               <Link to={"/#about"}>About</Link>
             </li>
