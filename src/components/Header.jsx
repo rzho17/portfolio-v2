@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useMediaQuery } from "react-responsive";
 
+// displays correct header navigation depending on screen size
 const Header = ({ content }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
@@ -9,27 +10,9 @@ const Header = ({ content }) => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  useEffect(() => {
-    const nav = document.querySelector("header");
-    if (!nav) return;
 
-    const scrollPoint = 100;
-
-    const handleScroll = () => {
-      if (window.scrollY > scrollPoint) {
-        nav.classList.add("scrolled");
-      } else {
-        nav.classList.remove("scrolled");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
+  //   checks if the header has scrolled past a certain point and adds a background to it
+  //   also disables scrolling when the mobile navigation is open
   useEffect(() => {
     const body = document.querySelector("body");
     const nav = document.querySelector("header");
@@ -57,37 +40,33 @@ const Header = ({ content }) => {
     };
   }, [isOpen]);
 
+  //when moving from desktop to mobile or vice versa, closes the navigation and resets it
   useEffect(() => {
     if (isDesktop && isOpen) {
       setIsOpen(false);
     }
   }, [isDesktop, isOpen]);
 
-  //   when not in mobile
-  // display the nav items
-
-  // when in mobile display hamburger menu
-  //
   return (
     <header>
-      <Link to={"/"}>
+      <a href="/">
         <h2>{content}</h2>
-      </Link>
+      </a>
 
       {isDesktop ? (
         <nav className="desktop-nav-wrapper">
           <ul className="desktop-nav">
             <li>
-              <Link to={"/"}>Home</Link>
+              <a href="/">Home</a>
             </li>
             <li>
-              <Link to={"/#about"}>About</Link>
+              <Link to={"/#about-section"}>About</Link>
             </li>
             <li>
               <Link to={"/works"}>Works</Link>
             </li>
             <li>
-              <Link to={"/#footer"}>Contact</Link>
+              <Link to={"#footer"}>Contact</Link>
             </li>
           </ul>
         </nav>
@@ -101,16 +80,16 @@ const Header = ({ content }) => {
           </div>
           <ul className="nav-list">
             <li>
-              <Link to={"/"}>Home</Link>
+              <a href="/">Home</a>
             </li>
-            <li>
-              <Link to={"/#about"}>About</Link>
+            <li onClick={toggleMenu}>
+              <Link to={"/#about-section"}>About</Link>
             </li>
-            <li>
+            <li onClick={toggleMenu}>
               <Link to={"/works"}>Works</Link>
             </li>
-            <li>
-              <Link to={"/#footer"}>Contact</Link>
+            <li onClick={toggleMenu}>
+              <Link to={"#footer"}>Contact</Link>
             </li>
           </ul>
         </nav>

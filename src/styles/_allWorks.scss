@@ -1,6 +1,9 @@
 @use "base" as *;
 
 #all-works {
+  a {
+    padding: 0;
+  }
   padding: 1rem;
 
   h1 {
@@ -10,17 +13,15 @@
 
   .article-container {
     display: flex;
-    // justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
     max-width: 1600px;
+    margin: 0 auto;
 
     article {
       position: relative;
       height: 400px;
-      // height: 100%;
-      max-width: 300px;
-      //   max-height: 500px;
+      width: 100%;
 
       border: 1px solid $font-color;
       border-radius: 10px;
@@ -30,6 +31,7 @@
       justify-content: space-between;
       gap: 1rem;
       flex-direction: column;
+
       h2 {
         font-weight: 400;
         text-transform: uppercase;
@@ -51,19 +53,22 @@
         font-size: 10rem;
       }
 
-      a {
+      button {
         display: flex;
         justify-content: center;
         align-items: center;
         align-self: flex-end;
 
         border: 1px solid;
-        // width: max-content;
         border-radius: 50%;
         width: 3rem;
         height: 3rem;
 
         background-color: $font-color;
+
+        &:hover {
+          cursor: pointer;
+        }
 
         svg {
           fill: $bg-color;

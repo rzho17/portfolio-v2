@@ -43,8 +43,10 @@
         text-transform: uppercase;
       }
 
-      h1 {
-        font-size: clamp(2rem, 6vw, 10rem);
+      .heading {
+        h1 {
+          font-size: clamp(2rem, 6vw, 10rem);
+        }
       }
 
       h2 {
@@ -80,7 +82,7 @@
 
         padding: 2rem 0;
         text-align: right;
-        font-weight: 100;
+        font-weight: 300;
         font-size: clamp(3rem, 5vw, 8rem);
       }
     }
@@ -109,22 +111,92 @@
 
     .highlights {
       div {
-        margin: 2rem 0;
+        padding: 2rem 0;
+
         border-bottom: 2px solid;
 
         figure {
+          box-shadow: $shadow;
+          border-radius: 10px;
           img {
+            display: block;
+            border-radius: 10px;
+            width: 100%;
             width: 100%;
             height: max-content;
             object-fit: contain;
           }
-          //   padding: 2rem 0 1rem;
-          //   padding: 1rem;
         }
         figcaption {
           font-size: $font-size;
           line-height: 1.6;
           padding: 2rem 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 48em) {
+  #single-work {
+    .landing {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: stretch;
+
+      .heading {
+        height: max-content;
+        grid-column: 1 / 3;
+        display: flex;
+        align-items: baseline;
+        padding: 0 1rem;
+        h1 {
+          font-size: clamp(2rem, 12vw, 15rem);
+          height: max-content;
+        }
+
+        span {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      picture {
+        background-color: $font-color;
+
+        width: 100%;
+        img {
+          height: 100%;
+          object-fit: cover;
+          width: 100%;
+        }
+        grid-row: 2;
+      }
+
+      .text {
+        grid-row: 2;
+      }
+    }
+
+    .highlights-container {
+      padding: 2rem 4rem;
+      .highlights {
+        div {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding: 2rem 0;
+
+          border: 1px 0 2px 0;
+
+          &:nth-of-type(even) {
+            figcaption {
+              order: -1;
+            }
+          }
+
+          figcaption {
+            padding: 0 2rem;
+          }
         }
       }
     }

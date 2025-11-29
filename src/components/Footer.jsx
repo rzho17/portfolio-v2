@@ -1,26 +1,28 @@
-import React from "react";
 import { Link } from "react-router";
 
+// Dynamic footer using api data
 const Footer = ({ data }) => {
   return (
-    <footer>
-      <h2>
-        {data.main_title_top}
-        <span>
-          {data.main_title_bot}
-          <span className="blob"></span>
-        </span>
-      </h2>
+    <footer id="footer">
+      <a href="/">
+        <h2>
+          {data.main_title_top}
+          <span>
+            {data.main_title_bot}
+            <span className="blob"></span>
+          </span>
+        </h2>
+      </a>
       <nav>
         <ul>
           <li>
-            <Link to={"/#about"}>About</Link>
+            <Link to={"/#about-section"}>About</Link>
           </li>
           <li>
             <Link to={"/works"}>Works</Link>
           </li>
           <li>
-            <Link to={"/#footer"}>Contact</Link>
+            <Link to={"#footer"}>Contact</Link>
           </li>
         </ul>
       </nav>
@@ -38,7 +40,7 @@ const Footer = ({ data }) => {
             alt={data.footer_links[1].icon.alt}
           />
         </a>
-        <a href="mailto:email@example.com" target="_blank">
+        <a href="mailto:richardho.works@gmail.com" target="_blank">
           <img
             src={data.footer_links[2].icon.url}
             alt={data.footer_links[2].icon.alt}
@@ -46,7 +48,9 @@ const Footer = ({ data }) => {
         </a>
       </div>
 
-      <p>back to top</p>
+      <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+        scroll to top
+      </button>
     </footer>
   );
 };

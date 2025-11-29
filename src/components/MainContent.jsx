@@ -3,18 +3,21 @@ import { Link, useOutletContext } from "react-router";
 import HomeSection from "./HomeSection";
 import AboutSection from "./AboutSection";
 import FeaturedWorks from "./FeaturedWorks";
+import { useEffect } from "react";
 
+// renders all the content for the home page
 const MainContent = () => {
   const { data } = useOutletContext();
 
-  console.log(data);
+  useEffect(() => {
+    document.title = "Richard Ho | Creative Developer";
+  });
+
   return (
     <>
       <HomeSection homeData={data} />
       <AboutSection aboutData={data} />
       <FeaturedWorks />
-      <Link to={"/works"}>TO all works</Link>
-      <Link to={"/works/123123"}>TO a single workds</Link>
     </>
   );
 };

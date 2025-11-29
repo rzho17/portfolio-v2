@@ -5,7 +5,15 @@ import { basePath } from "../../globals";
 import { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import ACFImage from "./ACFImage";
+import NotFound from "../utils/NotFound";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/all";
+
+// displays the single work page
+// takes the id from the parameters and fetches post data based on that id
+// if no match displays a 404 page
 const SingleWork = () => {
   const { id } = useParams();
   const restPath = basePath + `posts/${id}` + "?acf_format=standard";
@@ -15,6 +23,9 @@ const SingleWork = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [invalidPage, setInvalidPage] = useState(false);
 
+  gsap.registerPlugin(SplitText);
+
+  //   fetches the data and changes the title
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(restPath);
@@ -23,7 +34,7 @@ const SingleWork = () => {
         setData(data.acf);
         setIsLoaded(true);
 
-        console.log(data);
+        document.title = `Project | ${data.acf.project_title}`;
       } else {
         setInvalidPage(true);
       }
@@ -31,12 +42,31 @@ const SingleWork = () => {
     fetchData();
   }, [restPath]);
 
+  useGSAP(() => {
+    if (!isDesktop) return;
+
+    const split = SplitText.create(".heading h1", {
+      aria: "auto",
+    });
+
+    const tl = gsap.timeline();
+
+    tl.from(split.chars, {
+      y: -100,
+      autoAlpha: 0,
+      stagger: 0.05,
+      duration: 0.3,
+    })
+      .from(".landing .blob", { opacity: 0 })
+      .from("picture", { yPercent: 10, autoAlpha: 0 })
+      .from(".text", { yPercent: 10, autoAlpha: 0 }, "<");
+  }, [isLoaded]);
+
+  //   if invalid project, display not found page
   if (invalidPage) {
-    return <p>sorry the seems like that is still in the works!</p>;
+    return <NotFound />;
   }
 
-  console.log(restPath);
-  console.log(data);
   return (
     <>
       {isLoaded && (
@@ -45,10 +75,10 @@ const SingleWork = () => {
             {isDesktop ? (
               <div className="heading">
                 <h1>{data.project_title}</h1>
+                <span className="blob"></span>
               </div>
             ) : null}
 
-            {/* <ACFImage acfImageObject={data.main_image} /> */}
             <picture>
               <img src={data.main_image.url} alt={data.main_image.alt} />
             </picture>
@@ -101,19 +131,13 @@ const SingleWork = () => {
                 return (
                   <div>
                     <ACFImage acfImageObject={insight.highlight_image} />
-                    {/* <figure>
-                      <img
-                        src={insight.highlight_image.url}
-                        alt={insight.highlight_image.alt}
-                      />
-                    </figure> */}
+
                     <figcaption>{insight.highlight_info}</figcaption>
                   </div>
                 );
               })}
             </div>
           </div>
-          <Link to={"/"}>Home</Link>
         </section>
       )}
     </>
