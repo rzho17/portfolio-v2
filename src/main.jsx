@@ -1,5 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter } from "react-router";
@@ -8,7 +6,6 @@ import MainContent from "./components/MainContent";
 import AllWorks from "./components/AllWorks";
 import SingleWork from "./components/SingleWork";
 import App from "./App";
-import "./index.css";
 
 const router = createBrowserRouter([
   {

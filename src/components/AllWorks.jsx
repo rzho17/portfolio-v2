@@ -33,9 +33,9 @@ const AllWorks = () => {
 
   //animations
   useGSAP(() => {
-    gsap.set(".article-container", { autoAlpha: 1 });
+    // gsap.set(".article-container", { autoAlpha: 1 });
     gsap.fromTo(
-      "#all-works article",
+      ".article-container article",
       {
         x: -100,
         opacity: 0,

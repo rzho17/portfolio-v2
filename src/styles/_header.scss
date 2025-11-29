@@ -44,6 +44,10 @@ header {
     .nav-list {
       left: 0;
     }
+
+    .hamburger-container {
+      transform: rotate(45deg);
+    }
   }
 
   h2 {
@@ -57,6 +61,8 @@ header {
     grid-template-columns: 1fr 1fr;
     place-content: center;
     gap: 0.25rem;
+
+    transition: 0.3s ease;
     div {
       height: 0.75rem;
       width: 0.75rem;

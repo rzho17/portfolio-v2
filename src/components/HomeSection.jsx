@@ -33,7 +33,7 @@ const HomeSection = ({ homeData }) => {
       .from(
         "svg",
         { yPercent: -100, autoAlpha: 0, ease: "back", duration: 1 },
-        "+=.5"
+        "+=.25"
       );
 
     gsap.to("g", {

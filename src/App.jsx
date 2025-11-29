@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToSection from "./utils/ScrollToSection";
@@ -37,9 +37,14 @@ function App() {
   }, [restPath]);
 
   // checks if display is desktop friendly
+  // check if the cursor is available
   // displays cursor animation
   useGSAP(() => {
     if (!isDesktop) return;
+
+    const cursorEl = document.querySelector(".cursor");
+    if (!cursorEl) return;
+
     gsap.set(".cursor", { xPercent: -50, yPercent: -50 });
 
     let xTo = gsap.quickTo(".cursor", "x", { duration: 0.2, ease: "expo" }),
@@ -49,7 +54,7 @@ function App() {
       xTo(e.clientX);
       yTo(e.clientY);
     });
-  }, [data, isDesktop]);
+  }, [isLoaded, isDesktop]);
 
   return (
     <>

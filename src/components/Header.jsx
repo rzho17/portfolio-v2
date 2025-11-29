@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { useMediaQuery } from "react-responsive";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 // displays correct header navigation depending on screen size
 const Header = ({ content }) => {

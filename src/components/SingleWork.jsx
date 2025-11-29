@@ -90,8 +90,9 @@ const SingleWork = () => {
               <h2>Built With</h2>
               <ul>
                 {data.tech_stack_list.map((skill) => {
+                  console.log(skill.stack_logo.ID);
                   return (
-                    <div>
+                    <div key={skill.stack_logo.ID}>
                       <li>{skill.stack_name}</li>
                       <img
                         src={skill.stack_logo.url}
@@ -118,7 +119,7 @@ const SingleWork = () => {
             <h2>TLDR</h2>
             <ul className="tldr">
               {data.tldr.map((bullet) => {
-                return <li>{bullet.bullet_point}</li>;
+                return <li key={bullet.bullet_point}>{bullet.bullet_point}</li>;
               })}
             </ul>
           </div>
@@ -128,8 +129,9 @@ const SingleWork = () => {
 
             <div className="highlights">
               {data.highlight.map((insight) => {
+                console.log(insight);
                 return (
-                  <div>
+                  <div key={insight.highlight_image.ID}>
                     <ACFImage acfImageObject={insight.highlight_image} />
 
                     <figcaption>{insight.highlight_info}</figcaption>
